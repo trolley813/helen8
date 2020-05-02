@@ -17,6 +17,7 @@ pfiles = pgen.process('grammar/h8_parser.y')
 
 executable('h8c', 
            'src/h8_main.c', 
+           'src/h8_ast.c', 
            lfiles,
            pfiles,
            include_directories : inc)
