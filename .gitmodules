@@ -1,0 +1,3 @@
+[submodule "subprojects/libfirm"]
+	path = subprojects/libfirm
+	url = https://github.com/libfirm/libfirm.git
