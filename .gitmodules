@@ -1,3 +1,4 @@
 [submodule "subprojects/libfirm"]
 	path = subprojects/libfirm
 	url = https://github.com/libfirm/libfirm.git
+	branch = libfirm-1.22.0

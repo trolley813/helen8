@@ -1,6 +1,7 @@
 #include <h8_ast.h>
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 h8_ast *h8_ast_new(h8_ast_type type, void *data, size_t data_size,
                    size_t children_count, ...) {
@@ -37,4 +38,19 @@ void h8_ast_free(h8_ast *ast) {
   ast->data_size = 0;
   ast->children_count = 0;
   ast->type = H8_AST_DUMMY;
+}
+
+h8_ast *h8_ast_new_from_array(h8_ast_type type, void *data, size_t data_size,
+                              size_t children_count, h8_ast **children) {
+  h8_ast *result = malloc(sizeof(h8_ast));
+  result->type = type;
+  result->children_count = children_count;
+  result->data = data;
+  result->data_size = data_size;
+  if (children_count) {
+    result->children = malloc(children_count * sizeof(h8_ast *));
+  }
+  for (size_t idx = 0; idx < children_count; idx++) {
+    result->children[idx] = children[idx];
+  }
 }

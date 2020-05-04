@@ -8,6 +8,7 @@ typedef enum h8_ast_type {
   H8_AST_TYPENAME,
   H8_AST_IDENTIFIER,
   H8_AST_INTEGER,
+  H8_AST_REAL,
   H8_AST_FUNCTION_CALL,
 } h8_ast_type;
 
@@ -21,6 +22,9 @@ typedef struct h8_ast {
 
 h8_ast *h8_ast_new(h8_ast_type type, void *data, size_t data_size,
                    size_t children_count, ...);
+
+h8_ast *h8_ast_new_from_array(h8_ast_type type, void *data, size_t data_size,
+                              size_t children_count, h8_ast **children);
 
 void h8_ast_free(h8_ast *ast);
 
